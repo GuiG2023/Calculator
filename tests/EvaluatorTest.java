@@ -28,7 +28,7 @@ public class EvaluatorTest {
         int actualResult;
         try{
             actualResult = this.evaluator.evaluateExpression(testExpression);
-            Assertions.assertEquals(actualResult, expectedResult);
+            Assertions.assertEquals(expectedResult,actualResult);
         }catch (Exception ex){
             Assertions.fail();
         }
