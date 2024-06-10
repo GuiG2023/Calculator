@@ -38,23 +38,21 @@ public class Evaluator {
 
                     // TODO fix this line of code.
                     Operator newOperator = Operator.getOperator(expressionToken);
-                    boolean checkSize = false;
-                    //TODO protect the emptystackexception
+                    //TODO protect the emptystackexception for opreator stack
                     if (expressionToken.equals("(")) {
                         operatorStack.push(newOperator);
                     } else if (expressionToken.equals(")")) {
-                        while (!operatorStack.isEmpty() && !operatorStack.peek().toString().equals("(")) {//pop and calculate until "("
+                        while ((!operatorStack.isEmpty()) && (!operatorStack.peek().toString().equals("("))) {//pop and calculate until "("
                             Operator operatorFromStack = operatorStack.pop();
                             Operand operandTwo = operandStack.pop();
                             Operand operandOne = operandStack.pop();
                             Operand result = operatorFromStack.execute(operandOne, operandTwo);
                             operandStack.push(result);
-
                         }
                         operatorStack.pop(); // pop "("
                     } else {
                         while (!operatorStack.isEmpty() && operatorStack.peek().priority() >= newOperator.priority()) {
-//                              operand emptystack protect
+//                              operand emptystack protector
 //                            if (operandStack.size() <= 2) {
 //                          break;
 //                       }

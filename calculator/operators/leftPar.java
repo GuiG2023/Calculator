@@ -18,4 +18,9 @@ public class leftPar extends Operator {
     public Operand execute(Operand operandOne, Operand operandTwo) {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "(";//important!!!
+    }
 }
