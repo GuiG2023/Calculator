@@ -36,12 +36,12 @@ public class Evaluator {
                     }
 
 
-                    // TODO fix this line of code.
+                    // TODO fix this line of code. create new operators 6 kinds of
                     Operator newOperator = Operator.getOperator(expressionToken);
-                    //TODO protect the emptystackexception for opreator stack
+                    //TODO continue add opreators and calculate when have ")"
                     if (expressionToken.equals("(")) {
                         operatorStack.push(newOperator);
-                    } else if (expressionToken.equals(")")) {
+                    } else if (expressionToken.equals(")")) {//protect the emptystackexception for opreator stack
                         while ((!operatorStack.isEmpty()) && (!operatorStack.peek().toString().equals("("))) {//pop and calculate until "("
                             Operator operatorFromStack = operatorStack.pop();
                             Operand operandTwo = operandStack.pop();

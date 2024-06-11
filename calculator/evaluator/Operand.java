@@ -37,7 +37,7 @@ public class Operand {
             Integer.parseInt(token);
             return true;
         } catch (NumberFormatException e) {
-            System.out.println("Invalid token.Cannot convert into Integer");
+           // System.out.println("Invalid token.Cannot convert into Integer (maybe it's an operator)");
             return false;
         }
     }

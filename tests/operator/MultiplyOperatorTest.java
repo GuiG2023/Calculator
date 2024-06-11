@@ -50,5 +50,6 @@ public class MultiplyOperatorTest {
     @Test
     public void multiplicationPriorityTest(){
         Assertions.assertEquals((new MultiplyOperator().priority()), 2);
+//        Assertions.assertEquals();
     }
 }

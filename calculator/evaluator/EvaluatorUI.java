@@ -39,6 +39,7 @@ public class EvaluatorUI extends JFrame implements ActionListener {
 
          add(expressionTextField, BorderLayout.NORTH);
          expressionTextField.setEditable(false);
+         //can with keyboard if true ,make life easier
 
          add(buttonPanel, BorderLayout.CENTER);
          buttonPanel.setLayout(new GridLayout(5, 4));
@@ -65,7 +66,39 @@ public class EvaluatorUI extends JFrame implements ActionListener {
       * @param actionEventObject Event object generated when a
       *                          button is pressed.
       */
-     public void actionPerformed(ActionEvent actionEventObject) {
+
+    /**
+     *  I am using the switch statement cuz it's easy to
+     *  set input nums as default case:
+     *
+     */
+    public void actionPerformed(ActionEvent actionEventObject) {
+         String cmd = actionEventObject.getActionCommand();
+
+         switch (cmd){
+             case"C":
+                 this.expressionTextField.setText("");
+                 break;
+             case "CE":
+                 String text = this.expressionTextField.getText();
+                 if (!text.isEmpty()){
+                     this.expressionTextField.setText(text.substring(0,text.length()-1));
+                 }
+                 break;
+             case "=":
+                 try {
+                     Evaluator evaluator = new Evaluator();
+                     int result = evaluator.evaluateExpression(this.expressionTextField.getText());
+                     this.expressionTextField.setText(String.valueOf(result));
+                 }catch (InvalidTokenException e){
+                     this.expressionTextField.setText("ERROR!");
+                 }
+                 break;
+             default:
+                 this.expressionTextField.setText(this.expressionTextField.getText() + cmd);
+         }
+
+
 
 
      }
